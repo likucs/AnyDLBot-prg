@@ -29,7 +29,7 @@ from helper_funcs.help_Nekmo_ffmpeg import generate_screen_shots
 from helper_funcs.display_progress import progress_for_pyrogram
 
 
-@pyrogram.Client.on_message(pyrogram.Filters.command(["generatescss"]))
+@pyrogram.Client.on_message(pyrogram.Filters.command(["genss"]))
 async def generate_screen_shot(bot, update):
     if update.from_user.id not in Config.AUTH_USERS:
         await bot.delete_messages(
@@ -38,7 +38,7 @@ async def generate_screen_shot(bot, update):
             revoke=True
         )
         return
-    TRChatBase(update.from_user.id, update.text, "generatescss")
+    TRChatBase(update.from_user.id, update.text, "genss")
     if update.reply_to_message is not None:
         download_location = Config.DOWNLOAD_LOCATION + "/"
         a = await bot.send_message(
